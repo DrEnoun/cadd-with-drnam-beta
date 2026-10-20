@@ -11,12 +11,12 @@ export function renderCaseLibrary(app) {
   const cards = h('div', { class: 'mods', style: 'margin-top:20px' },
     ...cases.map(item => h('article', { class: 'mod sticker-static', style: 'padding:20px' },
       h('div', { class: 'mod__body' },
-        h('span', { class: 'mod__n' }, item.level + ' · ' + (item.status === 'ready' ? 'Available' : 'Coming soon')),
+        h('span', { class: 'mod__n' }, item.level + ' · ' + (item.status === 'ready' ? 'Available' : item.status === 'preview' ? 'Activity 1 preview' : 'Coming soon')),
         h('h3', {}, item.title),
         h('p', {}, item.summary),
         h('p', { class: 'muted', style: 'font-size:14px' }, item.evidence),
-        item.status === 'ready'
-          ? h('a', { class: 'go', href: item.href }, 'Start learning →')
+        (item.status === 'ready' || item.status === 'preview')
+          ? h('a', { class: 'go', href: item.href }, item.status === 'preview' ? 'Try Virtual Screening →' : 'Start learning →')
           : h('span', { class: 'go', 'aria-disabled': 'true' }, 'In development')))));
   app.append(intro, cards, h('p', { style: 'margin-top:24px' }, h('a', { href: '#/' }, '← Return to modules')));
 }
