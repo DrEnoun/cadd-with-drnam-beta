@@ -14,12 +14,12 @@ export const cases = Object.freeze([
     id: 'egfr-002',
     title: 'EGFR: ADMET and Machine Learning',
     level: 'Intermediate / advanced',
-    status: 'planned',
-    summary: 'Explore descriptors, ADMET, validated ML workflows, similarity search, docking interpretation and evidence-based ranking.',
-    href: null,
+    status: 'preview',
+    summary: 'Start with interactive virtual screening. ADMET, docking, molecular dynamics and machine learning will be developed in later stages.',
+    href: '#/egfr-screening',
     manifest: 'cases/egfr-002/manifest.json',
-    modules: ['descriptors', 'admet', 'ml', 'similarity', 'docking', 'decision'],
-    evidence: 'No validated EGFR dataset or model is bundled yet.'
+    modules: ['screening', 'docking', 'admet', 'network', 'md', 'decision', 'ml'],
+    evidence: 'Module 1 uses explicitly simulated classroom data; no validated EGFR assay dataset or model is bundled.'
   }
 ]);
 export const caseById = id => cases.find(item => item.id === id) ?? null;
