@@ -2,7 +2,7 @@
   "schemaVersion": "0.1.0",
   "caseId": "egfr-002",
   "title": "EGFR ADMET and Machine Learning Discovery",
-  "status": "planned",
+  "status": "partial-preview",
   "level": "intermediate-advanced",
   "target": {
     "name": "EGFR",
@@ -10,33 +10,44 @@
   },
   "modules": [
     {
-      "id": "descriptors",
-      "title": "Molecular descriptors"
-    },
-    {
-      "id": "admet",
-      "title": "ADMET screening"
-    },
-    {
-      "id": "ml",
-      "title": "Bioactivity machine learning"
-    },
-    {
-      "id": "similarity",
-      "title": "Similarity search"
+      "id": "screening",
+      "title": "Virtual screening",
+      "status": "interactive-simulated"
     },
     {
       "id": "docking",
-      "title": "Docking interpretation"
+      "title": "Molecular docking",
+      "status": "planned"
+    },
+    {
+      "id": "admet",
+      "title": "ADMET screening",
+      "status": "planned"
+    },
+    {
+      "id": "network",
+      "title": "Network pharmacology",
+      "status": "planned"
+    },
+    {
+      "id": "md",
+      "title": "Molecular dynamics",
+      "status": "planned"
     },
     {
       "id": "decision",
-      "title": "Integrated decision"
+      "title": "Integrated decision",
+      "status": "planned"
+    },
+    {
+      "id": "ml",
+      "title": "Machine learning extension",
+      "status": "planned"
     }
   ],
   "dataPolicy": {
-    "source": "pending",
-    "predictionLabels": "not-yet-validated",
+    "source": "fictional-classroom-examples",
+    "predictionLabels": "no-predictions",
     "simulatedDataMustBeLabeled": true
   }
 }
