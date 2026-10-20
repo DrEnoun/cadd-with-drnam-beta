@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0",
+  "caseId": "egfr-002",
+  "title": "EGFR ADMET and Machine Learning Discovery",
+  "status": "planned",
+  "level": "intermediate-advanced",
+  "target": {
+    "name": "EGFR",
+    "organism": "Homo sapiens"
+  },
+  "modules": [
+    {
+      "id": "descriptors",
+      "title": "Molecular descriptors"
+    },
+    {
+      "id": "admet",
+      "title": "ADMET screening"
+    },
+    {
+      "id": "ml",
+      "title": "Bioactivity machine learning"
+    },
+    {
+      "id": "similarity",
+      "title": "Similarity search"
+    },
+    {
+      "id": "docking",
+      "title": "Docking interpretation"
+    },
+    {
+      "id": "decision",
+      "title": "Integrated decision"
+    }
+  ],
+  "dataPolicy": {
+    "source": "pending",
+    "predictionLabels": "not-yet-validated",
+    "simulatedDataMustBeLabeled": true
+  }
+}
