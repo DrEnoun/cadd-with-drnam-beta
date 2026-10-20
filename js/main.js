@@ -1,6 +1,7 @@
 // CADD with Dr. NAM: hash router, home, record and about pages.
 import { h, download, art } from './ui.js';
 import { renderCaseLibrary } from './cases/library.js';
+import { renderEgfrScreening } from './cases/egfr-screening.js';
 import { store } from './store.js';
 import { modules, byId } from './modules/registry.js';
 import { exportCsv } from './eval.js';
@@ -30,6 +31,7 @@ async function route() {
   else if (page === 'handbook') cleanup = (await import('./handbook/index.js')).default(app, { route: rest }) || null;
   else if (page === 'project') cleanup = (await import('./project/index.js')).default(app, { route: rest }) || null;
   else if (page === 'cases') renderCaseLibrary(app);
+  else if (page === 'egfr-screening') renderEgfrScreening(app);
   else if (page === 'results') record();
   else if (page === 'about') about();
   else cleanup = home() || null;
