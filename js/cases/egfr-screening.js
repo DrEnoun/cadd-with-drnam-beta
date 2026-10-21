@@ -21,6 +21,18 @@ export function renderEgfrScreening(app) {
     h('p',{class:'lead'},'You are part of a team looking for possible new drugs. Look at four compounds. Choose which ones you want to study next.'),
     h('p',{},h('strong',{},'PRACTICE DATA — '),'These compounds and numbers are made up for learning. We do not know if these compounds work against EGFR or are safe to use.'),
     h('p',{class:'muted'},'What you will learn: how to make a first choice using compound properties, and why more tests are still needed.'));
+  const basics = h('section', {class:'glass stack',style:'margin-top:20px'},
+    h('h2',{},'Start here: What is a molecule?'),
+    h('p',{},'Everything around us is made of tiny particles called atoms. When atoms join together, they can form a molecule. Water is one example. One water molecule has two hydrogen atoms and one oxygen atom.'),
+    h('h3',{},'What is a compound?'),
+    h('p',{},'A chemical compound contains two or more different elements joined together. Many medicines contain molecules made of carbon, hydrogen, oxygen, nitrogen and other elements.'),
+    h('h3',{},'How can a molecule become a medicine?'),
+    h('p',{},'A molecule may interact with a protein in our body. Some proteins help diseases grow. Scientists look for molecules that may change how these proteins work. But a promising molecule is not yet a medicine. It needs many more tests.'),
+    h('h3',{},'What is EGFR?'),
+    h('p',{},'EGFR is a protein that helps cells receive signals to grow. In some cancers, EGFR signalling is too active. Researchers study molecules that may block this signal.'),
+    h('h3',{},'What is virtual screening?'),
+    h('p',{},'Imagine a box with thousands of keys. You want to find keys that may fit one lock. Testing every key takes time. Virtual screening uses a computer to help choose which keys to check first. The protein is like the lock, and the molecules are like the keys. The comparison is only a simple way to understand the idea.'),
+    h('p',{class:'muted'},'Remember: computer results help us choose what to test. They do not prove that a molecule works or is safe.'));
   const results = h('div',{role:'status','aria-live':'polite',style:'margin-top:12px'});
   const count = h('strong',{});
   const rows = compounds.map(c => {
@@ -56,6 +68,6 @@ export function renderEgfrScreening(app) {
     quiz.append(field,result);
   });
   quiz.append(h('p',{class:'muted'},'This is practice only. Your answers will not change your COX-2 learning record.'),h('a',{href:'#/cases',class:'go'},'← Back to Case Library'));
-  app.append(intro,exercise,quiz);
+  app.append(intro,basics,exercise,quiz);
   update();
 }
