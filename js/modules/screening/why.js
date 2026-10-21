@@ -8,16 +8,16 @@ const fmt = n => n >= 1e6 ? `${(n / 1e6).toFixed(n % 1e6 ? 1 : 0)} million` : n 
 export function render(host, api) {
   const T = api.data.teaching.why, lib = api.data.compounds;
   host.append(
-    h('div', { class: 'why' }, h('strong', {}, 'Why do we do this? '), 'A real compound library has millions of molecules. Testing them all in the lab is far too slow and costly, and docking every one with the most accurate method is also too slow. A funnel solves both problems: cheap, fast filters go first, and the expensive, accurate methods only run on the survivors.'),
-    h('p', { class: 'lead' }, 'Watch the funnel below. Each glowing ring is a gate. Compounds that fail a gate turn red and drop out. Only a few reach the tube at the bottom, and those are the ones you take to the lab.'));
+    h('div', { class: 'why' }, h('strong', {}, 'Why do we do this? '), 'A molecule is made of atoms joined together. Scientists may have thousands or even millions of molecules to study. They cannot test every molecule in the laboratory at once. Virtual screening helps them choose which ones to study first. Think of a funnel: many molecules enter at the top. At each step, a simple check removes some molecules. A smaller group remains for further study.'),
+    h('p', { class: 'lead' }, 'Look at the funnel below. Each glowing ring is one check, also called a filter. A molecule that does not pass a filter turns red and leaves the funnel. The molecules left at the bottom may be chosen for laboratory testing. Passing these filters does not prove that they work as medicines.'));
   const v = createViewer(host, { height: 460, dist: 58, yaw: .3, pitch: .1 });
   let funnel = null;
   if (v) {
     funnel = funnelScene(v, lib, T.stages.slice(1).map(s => ({ label: s.label, pass: s.pass })), 2000000);
-    host.append(labelBar(null, [...legendItems(), { label: 'Red flash: removed at that gate', color: '#ff5a5a' }]), h('p', { class: 'hint' }, 'The funnel follows the sliders below: the numbers at each gate and how many compounds drop out change when you change a stage.'));
+    host.append(labelBar(null, [...legendItems(), { label: 'Red flash: removed at that gate', color: '#ff5a5a' }]), h('p', { class: 'hint' }, 'Move the sliders below. Watch how the number of molecules changes at each step.'));
   }
   // your own funnel
-  host.append(h('h3', { style: 'margin-top:22px' }, 'Build your own funnel'), h('p', {}, 'Choose the library size and how much each stage keeps. See how few compounds remain, and compare it with testing everything.'));
+  host.append(h('h3', { style: 'margin-top:22px' }, 'Build your own funnel'), h('p', {}, 'Choose how many molecules you want to start with. Then choose how many pass each filter. See how many remain.'));
   const size = h('select', { 'aria-label': 'Library size' }, [100000, 500000, 2000000, 10000000].map(n => h('option', { value: n, selected: n === 2000000 || null }, `${fmt(n)} compounds`)));
   const stages = T.stages.slice(1), vals = stages.map(s => Math.round(s.pass * 100)), rows = h('div', { class: 'stack' }), out = h('div', { class: 'stack' });
   const upd = () => {
@@ -35,7 +35,7 @@ export function render(host, api) {
   host.append(h('div', { class: 'row' }, h('span', {}, 'Library:'), size), rows, out);
   upd();
 
-  host.append(h('h3', { style: 'margin-top:22px' }, 'Match each situation to the screening tool'));
+  host.append(h('h3', { style: 'margin-top:22px' }, 'Choose the best screening method for each situation'));
   const picks = {}, list = h('div', { class: 'stack' });
   T.scenarios.forEach(s => list.append(h('div', { class: 'card sticker-static', 'data-s': s.id }, h('p', {}, s.text),
     h('select', { 'aria-label': s.text, onchange: e => { picks[s.id] = e.target.value; } }, h('option', { value: '' }, 'Choose a tool…'), T.methods.map(m => h('option', { value: m.id }, m.text))), h('div', { class: 'fbslot' }))));
