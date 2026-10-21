@@ -14,8 +14,8 @@ export const STEPS = [
 
 const def = {
   id: 'screening', number: 1, title: 'Virtual Screening', art: 'screening', quiz: 'data/screening/quiz.json', steps: STEPS,
-  blurb: 'How to find a few promising compounds among thousands, and how to judge the screen.',
-  intro: 'Virtual screening uses the computer to rank a large library of compounds so that only a small, well-chosen set is bought and tested in the lab. Many students can run a screen but cannot say why each stage exists or how to tell whether the screen actually worked. This module shows the whole funnel on a library of 45 real drugs, so you can see every compound.',
+  blurb: 'Start with molecules. Then learn how a computer helps us choose compounds to test.'
+  intro: 'A molecule is a group of atoms joined together. Some molecules may become medicines. A compound library is a collection of molecules that scientists want to study. Virtual screening uses a computer to help choose which compounds to test first. In this module, you will explore 45 real drugs and practise how scientists make a shortlist. A computer result is only a first clue. We still need laboratory tests.',
   outcomes: ['Explain why we screen virtually and why it is done as a funnel.', 'Apply property filters (Lipinski and Veber) and see what they can wrongly remove.', 'Describe how a library is prepared and why.', 'Compare ligand-based and structure-based screening and name the strength and weakness of each.', 'Judge a screen with a ROC curve, AUC and enrichment factor.', 'Choose a short, varied, inspected list of hits and justify it.'],
   note: 'It takes about 40 to 60 minutes. The drugs, their properties and their 3D shapes are real (computed with RDKit); the docking-style score is mock. Works on phone, tablet and computer.',
   async loadData() { const [lib, teaching] = await Promise.all([fetchJson('data/screening/library.json'), fetchJson('data/screening/teaching.json')]); lib.teaching = teaching; lib.structure = await fetchJson('data/docking/cox2.json'); return lib; },
